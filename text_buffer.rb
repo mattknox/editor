@@ -1,7 +1,7 @@
 class AbstractTextCollection
   attr_accessor :collection, :separator, :terminal
 
-  def initialize(text, separator = "")
+  def initialize(text = "", separator = "")
     self.collection = []
     self.separator = separator
     self.text = text
@@ -18,26 +18,19 @@ class AbstractTextCollection
   end
 end
 
-class TextBuffer
+class TextBuffer < AbstractTextCollection
   class NotYetImplemented < StandardError; end
 
-  attr_accessor :lines, :file, :current_line, :current_column
+  attr_accessor :file, :current_line, :current_column
 
-  def initialize
-    self.lines ||= []
+  def initialize(text = "", separator = "")
+    super
     self.current_line = 0
     self.current_column = 0
   end
 
-  def to_s
-    lines.map { |line| line.to_s }.join()
-  end
-
-  def text=(text)
-    text.split(/(\n)/).each_slice(2) do |body, separator|
-      lines << Line.new(body, separator)
-    end
-  end
+  def split_regex; /(\n)/; end
+  def collection_class; Line; end
 
   def save
     raise NotYetImplemented

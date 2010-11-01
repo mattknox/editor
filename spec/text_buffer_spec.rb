@@ -21,8 +21,7 @@ FOO
 describe TextBuffer do
   describe "to_s" do
     it "should reply to text with the text put in" do
-      t = TextBuffer.new
-      t.text = $str
+      t = TextBuffer.new $str
 
       t.to_s.should == $str
     end
