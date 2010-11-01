@@ -9,8 +9,8 @@ class TextBuffer
     self.current_column = 0
   end
 
-  def text
-    lines.map { |line| line.text }.join()
+  def to_s
+    lines.map { |line| line.to_s }.join()
   end
 
   def text=(text)
@@ -63,8 +63,8 @@ class Line
     end
   end
 
-  def text
-    self.words.map { |word| word.text }.join("") + separator
+  def to_s
+    self.words.map { |word| word.to_s }.join("") + separator
   end
 end
 
@@ -76,7 +76,7 @@ class Word
     self.separator = separator
   end
 
-  def text
+  def to_s
     body.to_s + separator.to_s
   end
 
@@ -95,8 +95,8 @@ class AbstractTextCollection
     self.text = text
   end
 
-  def text
-    collection.map { |element| element.text }.join("") + separator
+  def to_s
+    collection.map { |element| element.to_s }.join("") + separator
   end
 end
 
