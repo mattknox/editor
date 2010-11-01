@@ -84,3 +84,22 @@ class Word
     body.length + separator.length
   end
 end
+
+
+class AbstractTextCollection
+  attr_accessor :collection, :separator, :terminal
+
+  def initialize(text, separator = "")
+    self.collection = []
+    self.separator = ""
+    self.text = text
+  end
+
+  def text
+    collection.map { |element| element.text }.join("") + separator
+  end
+end
+
+class DoublyLinkedList
+  attr_accessor :data, :back, :forward
+end
