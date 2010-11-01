@@ -19,6 +19,11 @@ class AbstractTextCollection
 end
 
 class TextBuffer < AbstractTextCollection
+  def split_regex; /(\n)/ end
+  def collection_class; Line end
+end
+
+class EditableBuffer
   class NotYetImplemented < StandardError; end
 
   attr_accessor :file, :current_line, :current_column
@@ -28,9 +33,6 @@ class TextBuffer < AbstractTextCollection
     self.current_line = 0
     self.current_column = 0
   end
-
-  def split_regex; /(\n)/; end
-  def collection_class; Line; end
 
   def save
     raise NotYetImplemented
@@ -62,8 +64,8 @@ class TextBuffer < AbstractTextCollection
 end
 
 class Line < AbstractTextCollection
-  def split_regex; /(\s+)/; end
-  def collection_class; Word; end
+  def split_regex; /(\s+)/ end
+  def collection_class; Word end
 end
 
 class Word
