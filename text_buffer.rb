@@ -1,3 +1,23 @@
+class AbstractTextCollection
+  attr_accessor :collection, :separator, :terminal
+
+  def initialize(text, separator = "")
+    self.collection = []
+    self.separator = separator
+    self.text = text
+  end
+
+  def to_s
+    collection.map { |element| element.to_s }.join("") + separator
+  end
+
+  def text=(text)
+    text.split(split_regex).each_slice(2) do |body, separator|
+      collection << collection_class.new(body, separator)
+    end
+  end
+end
+
 class TextBuffer
   class NotYetImplemented < StandardError; end
 
@@ -48,24 +68,9 @@ class TextBuffer
   end
 end
 
-class Line
-  attr_accessor :words, :separator
-
-  def initialize(text = "", separator = "")
-    self.words = []
-    self.text = text
-    self.separator = separator
-  end
-
-  def text=(text)
-    text.split(/(\s+)/).each_slice(2) do |body, separator|
-      words << Word.new(body, separator)
-    end
-  end
-
-  def to_s
-    self.words.map { |word| word.to_s }.join("") + separator
-  end
+class Line < AbstractTextCollection
+  def split_regex; /(\s+)/; end
+  def collection_class; Word; end
 end
 
 class Word
@@ -82,21 +87,6 @@ class Word
 
   def length
     body.length + separator.length
-  end
-end
-
-
-class AbstractTextCollection
-  attr_accessor :collection, :separator, :terminal
-
-  def initialize(text, separator = "")
-    self.collection = []
-    self.separator = ""
-    self.text = text
-  end
-
-  def to_s
-    collection.map { |element| element.to_s }.join("") + separator
   end
 end
 
