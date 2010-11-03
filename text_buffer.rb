@@ -85,6 +85,47 @@ class Word
   end
 end
 
-class DoublyLinkedList
-  attr_accessor :data, :back, :forward
+class DConsCell
+  attr_accessor :data, :next_node, :prev_node
+
+  def initialize(data, next_node = nil, prev_node = nil)
+    self.data = data
+    self.next_node = next_node
+    self.prev_node = prev_node
+  end
+
+  def self.from_array(arr)
+    prev_node = nil
+    head = nil
+    arr.each do |elt|
+      curr = new(elt, nil, prev_node)
+      head ||= curr
+      prev_node && prev_node.next_node = curr
+      prev_node = curr
+    end
+    head
+  end
+
+  def car
+    self.data
+  end
+
+  def cdr
+    self.next_node
+  end
+
+
+  def inspect(sep = ",", start = "(", finish = ")")
+    start = prev_node ? '' : start
+    ending = next_node ? "#{sep}#{next_node.inspect}" : finish
+    "#{start}#{data}#{ending}"
+  end
+end
+
+def reload
+  eval File.read("./text_buffer.rb")
+end
+
+def cons(*args)
+  DConsCell.new *args
 end

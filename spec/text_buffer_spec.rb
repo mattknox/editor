@@ -27,3 +27,19 @@ describe TextBuffer do
     end
   end
 end
+
+describe DConsCell do
+  list = DConsCell.new(1, nil, nil)
+  t = DConsCell.new(7, nil, list)
+  list.next_node = t
+  describe "inspect" do
+    it "should return (1,7) on the demo list" do
+      list.inspect.should == "(1,7)"
+    end
+  end
+  describe "from_array" do
+    it "should return the same dll from the array [1,7]" do
+      DConsCell.from_array([1,7]).inspect.should == "(1,7)"
+    end
+  end
+end
