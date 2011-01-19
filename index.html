@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>
+      start of an editor
+    </title>
+    <script src="http://code.jquery.com/jquery-1.4.4.js"></script>
+    <script type="text/javascript" src="./editor.js"></script>
+    <script>
+
+window.onload = function (){
+  eventHandler = function (e){
+    detectEvent(e);
+  }
+
+  window.addEventListener('keydown', eventHandler, false);
+  window.addEventListener('keyup', eventHandler, false);
+  window.addEventListener('keypress', eventHandler, false);
+}
+    </script>
+  </head>
+  <body>
+    <div id="frame"></div>
+    <div style="display: none">
+      <a onClick="Clear()" href="#">click to clear debug pane</a>
+      <div id="debug_pane">
+        this is where stuff will be written
+      </div>
+    </div>
+  </body>
+</html>

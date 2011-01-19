@@ -1,0 +1,31 @@
+editor:
+a keybindings system, flexible enough to emulate emacs/vim
+actual package system
+  namespaces, so you can have 'eval' in each of lisp, js, factor, etc.
+nice UI
+good extension language-ideally js/html/css
+semantic CSS classes for text highlighting, so someone can have a single consistent look-n-feel for all their modes
+plugin system for grammars/parsers for languages so they can all have perfect highlighting/indentation.
+system for interfacing to the local box-at minimum good enough to talk to git.
+a swank-like system for things to talk to debuggers so every language gets slime
+elisp smushes together at least 4 kinds of config:
+-defining new functions
+-setting keybindings
+-setting behavioral variables (how many spaces to indent with a tab, how much colorization to do, etc.)
+-visual styling
+splitting these into different deals would be great, particularly if there was a namespacing mechanism.
+
+
+way to build this:
+1 datastructure for exposing a text file for editing.
+2 library for working with said datastructure from the repl.  Lets you move around, cut lines, put them back, transpose, etc.
+3 library for embeddable parsers for languages/protocols/etc..  This converts to sexps
+4 library for conversion of the sexps to html
+5 keypress-to-function translator
+6 package system for functions
+7 html for editing
+8 library to deal with the local system
+9 library for network ops.
+
+1: need a replayable journal of insert/delete operations that can be 'gc'd down to a plain text file.  Also need a doubly-linked-list of lines for fast text and line insert/delete and probably display too.  Finally, need a sexp tree for sexp operations.  Need all of these to remain in sync, and not generate too much garbage.  TextBuffer should be the name for this class.  Evented seems like a good way to implement this sort of app; the keyboard, disk, mouse, and network will generate events and the rest of the system will produce/consume them.
+
