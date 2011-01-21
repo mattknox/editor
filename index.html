@@ -9,18 +9,28 @@
 
 window.onload = function (){
   eventHandler = function (e){
-    detectEvent(e);
+    handleEvent(e);
   }
 
-  window.addEventListener('keydown', eventHandler, false);
-  window.addEventListener('keyup', eventHandler, false);
-  window.addEventListener('keypress', eventHandler, false);
+  window.addEventListener('keydown', handleSpecialKeys, false);
+  window.addEventListener('keyup', ignoreEvent, false);
+  window.addEventListener('keypress', handleEvent, false);
+  debug_pane = document.getElementById("debug_pane");
+  debug_pane.addEventListener("keypress", debugEvent, false);
+
+   $("#toggler").toggle(function() {$("#debug_wrapper").hide()},
+                       function() {$("#debug_wrapper").show()});
 }
     </script>
   </head>
   <body>
-    <div id="frame"></div>
-    <div style="display: none">
+    <p>so far this is mouseless, and doesn't do delete</p>
+    <hr>
+    <div id="code"></div>
+    <hr>
+    <h3 id="toggler"> toggle debug pane
+    </h3>
+    <div id="debug_wrapper">
       <a onClick="Clear()" href="#">click to clear debug pane</a>
       <div id="debug_pane">
         this is where stuff will be written
