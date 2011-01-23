@@ -22,6 +22,10 @@ function Word(text) {
   this.collection = text;
 }
 
+Word.prototype.toString = function() {
+  return this.collection.map(function(e){ return e.toString();}).join("");
+};
+
 function Line(){
   this.splitRegex = /(\s+)/;
   this.collectionClass = Word;
