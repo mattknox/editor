@@ -9,11 +9,17 @@ Object.prototype.begetObject = function () {
 function AbstractTextCollection(text){
   this.splitRegex = /(\n)/;
   this.collectionClass = Word;
-  this.collection = text.split(this.splitRegex).map( function(x) { return new Word(x);});
+  if (text) {
+    this.collection = text.split(this.splitRegex).map( function(x) { return new Word(x);});
+  }
 }
 
 AbstractTextCollection.prototype.toString = function() {
-  return this.collection.map(function(elt){ return elt.toString();}).join("");
+  if ("string" == typeof this.collection) {
+    return this.collection;
+  } else {
+    return this.collection.map(function(elt){ return elt.toString();}).join("");
+  }
 };
 
 function Word(text) {
@@ -22,19 +28,24 @@ function Word(text) {
   this.collection = text;
 }
 
-Word.prototype.toString = function() {
-  return this.collection.map(function(e){ return e.toString();}).join("");
-};
+Word.prototype = new AbstractTextCollection(); 
+Word.prototype.constructor=Word;
 
 function Line(){
   this.splitRegex = /(\s+)/;
   this.collectionClass = Word;
 }
 
+Line.prototype = new AbstractTextCollection(); 
+Line.prototype.constructor=Line;
+
 function TextBuffer(){
   this.splitRegex = /(\n)/;
   this.collectionClass = Line;
 }
+
+TextBuffer.prototype = new AbstractTextCollection(); 
+TextBuffer.prototype.constructor=TextBuffer;
 
 function handleEvent(e) {
   handleKeyPress(String.fromCharCode(e.keyCode), e.shiftKey, e.ctrlKey, e.altKey, e.metaKey);
