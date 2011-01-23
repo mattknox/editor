@@ -13,7 +13,7 @@ function AbstractTextCollection(text){
 }
 
 AbstractTextCollection.prototype.toString = function() {
-  return this.collection.join("");
+  return this.collection.map(function(elt){ return elt.toString();}).join("");
 };
 
 function Word(text) {
