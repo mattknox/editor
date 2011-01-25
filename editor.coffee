@@ -1,18 +1,25 @@
 class AbstractTextBuffer
   constructor: (text) ->
-    text.split(@splitter).map
+    raw_arr = atom for text.split(this.splitter).map
 
-class TextBuffer extends AbstractTextBuffer
-  splitter: /(\n)/
-  collectionClass: Line
+class Word extends AbstractTextBuffer
+  splitter: ""
+
+  collectionClass: null
+
   constructor: (@text) ->
 
 class Line extends AbstractTextBuffer
   splitter: /(\s+)/
-  collectionClass: Word
-    constructor: (@text) ->
 
-class Word extends AbstractTextBuffer
-  splitter: ""
-  collectionClass: null
+  collectionClass: Word
+
   constructor: (@text) ->
+
+class TextBuffer extends AbstractTextBuffer
+  constructor: (@text) ->
+
+  splitter: /(\n)/
+
+  collectionClass: Line
+
