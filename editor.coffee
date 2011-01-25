@@ -1,4 +1,4 @@
-class AbstactTextBuffer
+class AbstractTextBuffer
   constructor: (text) ->
     text.split(@splitter).map
 
