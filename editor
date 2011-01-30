@@ -17,7 +17,7 @@ splitting these into different deals would be great, particularly if there was a
 
 
 way to build this:
-1 datastructure for exposing a text file for editing.
+1 datastructures and libraries for exposing a text file for editing.
 2 library for working with said datastructure from the repl.  Lets you move around, cut lines, put them back, transpose, etc.
 3 library for embeddable parsers for languages/protocols/etc..  This converts to sexps
 4 library for conversion of the sexps to html
