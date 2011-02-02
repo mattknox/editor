@@ -25,7 +25,7 @@ way to build this:
 6 package system for functions
 7 html for editing
 8 library to deal with the local system
-9 library for network ops.
+9 library for network ops-if in browser, this is pretty much free.  
 
 1: need a replayable journal of insert/delete operations that can be 'gc'd down to a plain text file.  Also need a doubly-linked-list of lines for fast text and line insert/delete and probably display too.  Finally, need a sexp tree for sexp operations.  Need all of these to remain in sync, and not generate too much garbage.  TextBuffer should be the name for this class.  Evented seems like a good way to implement this sort of app; the keyboard, disk, mouse, and network will generate events and the rest of the system will produce/consume them.
 
