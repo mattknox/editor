@@ -48,7 +48,15 @@ TextBuffer.prototype = new AbstractTextCollection();
 TextBuffer.prototype.constructor=TextBuffer;
 
 function handleEvent(e) {
-  handleKeyPress(String.fromCharCode(e.keyCode), e.shiftKey, e.ctrlKey, e.altKey, e.metaKey);
+  if ($debug()) {
+    debugEvent(e);
+  }
+
+  if (e.keyCode == 13) {
+    document.getElementById("code").innerHTML += "<br/>";
+  } else {
+    handleKeyPress(String.fromCharCode(e.keyCode), e.shiftKey, e.ctrlKey, e.altKey, e.metaKey);
+  }
 }
 
 function ignoreEvent(e) {
@@ -62,6 +70,17 @@ function handleKeyPress(charCode, shift, ctrl, alt, meta) {
 var Clear = function clear() {
   document.getElementById("debug_pane").innerHTML = "";
 };
+
+var $debug = function () {
+  var on = false;
+
+  return function () {
+    if (arguments.length == 1) {
+      on = arguments[0];
+    }
+    return on;
+  };
+}();
 
 function debugEvent(e) {
   debug_pane = document.getElementById("debug_pane");

@@ -1,3 +1,7 @@
 this is intended to be the beginnings of a javascript programmer's text editor, in the same spirit as emacs.
 The main goal is to be extensible in javascript/coffeescript/sibilant/whatever else compiles to js, and also styleable in HTML/CSS.
 
+
+need to build:
+  parser
+  macros to transform source code into classed code, for colorization.

@@ -12,8 +12,8 @@ window.onload = function (){
     handleEvent(e);
   }
 
-  window.addEventListener('keydown', handleSpecialKeys, false);
-  window.addEventListener('keyup', ignoreEvent, false);
+//  window.addEventListener('keydown', handleSpecialKeys, false);
+//  window.addEventListener('keyup', ignoreEvent, false);
   window.addEventListener('keypress', handleEvent, false);
   debug_pane = document.getElementById("debug_pane");
   debug_pane.addEventListener("keypress", debugEvent, false);
@@ -32,6 +32,8 @@ window.onload = function (){
     </h3>
     <div id="debug_wrapper">
       <a onClick="Clear()" href="#">click to clear debug pane</a>
+      <a onClick="$debug(true)" href="#">click to turn debug on</a>
+      <a onClick="$debug(false)" href="#">click to turn debug off</a>
       <div id="debug_pane">
         this is where stuff will be written
       </div>
