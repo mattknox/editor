@@ -8,9 +8,9 @@ Object.prototype.begetObject = function () {
 
 function AbstractTextCollection(text){
   this.splitRegex = /(\n)/;
-  this.collectionClass = Word;
+  this.collectionClass = Line;
   if (text) {
-    this.collection = text.split(this.splitRegex).map( function(x) { return new Word(x);});
+    this.collection = text.split(this.splitRegex).map( function(x) { return new Line(x);});
   }
 }
 
