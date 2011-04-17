@@ -6,6 +6,29 @@ Object.prototype.begetObject = function () {
 
 // newObject = oldObject.begetObject();
 
+function textCollectionBuilder(splitter, collectionClass) {
+  var split = function(str) {
+    if (splitter) {
+      return this.collection = text.split(splitter).map( function(x) { return collectionClass(x);});
+    } else {
+      return str;
+    }
+  };
+  return function (text) {
+    return {
+      
+    };
+  };
+}
+
+function blah(text) {
+  var append = function(x){ this.text += x; };
+  return {
+    text: text,
+    append: append
+  };
+}
+
 function AbstractTextCollection(text){
   this.splitRegex = /(\n)/;
   this.collectionClass = Line;
