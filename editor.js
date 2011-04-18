@@ -11,24 +11,26 @@ function textCollectionBuilder(splitter, collectionClass) {
     if (splitter) {
       return this.collection = text.split(splitter).map( function(x) { return collectionClass(x);});
     } else {
-      return str;
+      return this.collection = str;
     }
   };
   return function (text) {
     return {
       splitter: splitter,
-      collectionClass: collectionClass
+      collectionClass: collectionClass,
+      collection: this.collection
     };
   };
 }
 
-function blah(text) {
-  var append = function(x){ this.text += x; };
-  return {
-    text: text,
-    append: append
-  };
-}
+// example of how I used "function return inheritance"
+// function blah(text) {
+//   var append = function(x){ this.text += x; };
+//   return {
+//     text: text,
+//     append: append
+//   };
+// }
 
 function AbstractTextCollection(text){
   this.splitRegex = /(\n)/;
