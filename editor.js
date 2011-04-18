@@ -16,7 +16,8 @@ function textCollectionBuilder(splitter, collectionClass) {
   };
   return function (text) {
     return {
-      
+      splitter: splitter,
+      collectionClass: collectionClass
     };
   };
 }
