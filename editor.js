@@ -7,30 +7,23 @@ Object.prototype.begetObject = function () {
 // newObject = oldObject.begetObject();
 
 function textCollectionBuilder(splitter, collectionClass) {
-  var split = function(str) {
-    if (splitter) {
-      return this.collection = text.split(splitter).map( function(x) { return collectionClass(x);});
-    } else {
-      return this.collection = str;
-    }
+  var split = function(str, splitter) {
+    // x.collection[0].collection.map(function(x) {return x.text();}).join(" ")
+    this.text = function() {
+      return this.collection.map(function (x) {return x.text();}).join("");
+    };
+    return this.collection = str.split(splitter).map( function(x) { return collectionClass(x);});
   };
   return function (text) {
+    split(text, splitter);
     return {
-      splitter: splitter,
+      splitter: split,
       collectionClass: collectionClass,
-      collection: this.collection
+      collection: this.collection,
+      text: this.text
     };
   };
 }
-
-// example of how I used "function return inheritance"
-// function blah(text) {
-//   var append = function(x){ this.text += x; };
-//   return {
-//     text: text,
-//     append: append
-//   };
-// }
 
 function AbstractTextCollection(text){
   this.splitRegex = /(\n)/;
