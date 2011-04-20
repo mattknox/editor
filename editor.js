@@ -1,11 +1,3 @@
-Object.prototype.begetObject = function () {
-  function F() {}
-  F.prototype = this;
-  return new F();
-};
-
-// newObject = oldObject.begetObject();
-
 function textCollectionBuilder(splitter, collectionClass) {
   var split = function(str, splitter) {
     // x.collection[0].collection.map(function(x) {return x.text();}).join(" ")
