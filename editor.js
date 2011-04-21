@@ -18,47 +18,6 @@ function textCollectionBuilder(splitter, collectionClass) {
   };
 }
 
-function AbstractTextCollection(text){
-  this.splitRegex = /(\n)/;
-  this.collectionClass = Line;
-  if (text) {
-    this.collection = text.split(this.splitRegex).map( function(x) { return new Line(x);});
-  }
-}
-
-AbstractTextCollection.prototype.toString = function() {
-  if ("string" == typeof this.collection) {
-    return this.collection;
-  } else {
-    return this.collection.map(function(elt){ return elt.toString();}).join("");
-  }
-};
-
-function Word(text) {
-  this.splitRegex = "";
-  this.collectionClass = null;
-  this.collection = text;
-}
-
-Word.prototype = new AbstractTextCollection(); 
-Word.prototype.constructor=Word;
-
-function Line(){
-  this.splitRegex = /(\s+)/;
-  this.collectionClass = Word;
-}
-
-Line.prototype = new AbstractTextCollection(); 
-Line.prototype.constructor=Line;
-
-function TextBuffer(){
-  this.splitRegex = /(\n)/;
-  this.collectionClass = Line;
-}
-
-TextBuffer.prototype = new AbstractTextCollection(); 
-TextBuffer.prototype.constructor=TextBuffer;
-
 function handleEvent(e) {
   if ($debug()) {
     debugEvent(e);
