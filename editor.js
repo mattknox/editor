@@ -6,6 +6,7 @@ function textCollectionBuilder(splitter, collectionClass) {
     };
     return this.collection = str.split(splitter).map( function(x) { return collectionClass(x);});
   };
+ 
   return function (text) {
     split(text, splitter);
     return {
