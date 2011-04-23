@@ -3,5 +3,5 @@ The main goal is to be extensible in javascript/coffeescript/sibilant/whatever e
 
 
 need to build:
-  parser
+  parser framework
   macros to transform source code into classed code, for colorization.
