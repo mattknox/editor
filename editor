@@ -31,3 +31,4 @@ way to build this:
 
 2: need a replayable journal of insert/delete operations that can be 'gc'd down to a plain text file.  Also need a doubly-linked-list of lines for fast text and line insert/delete and probably display too.  Finally, need a sexp tree for sexp operations.  Need all of these to remain in sync, and not generate too much garbage.  TextBuffer should be the name for this class.  Evented seems like a good way to implement this sort of app; the keyboard, disk, mouse, and network will generate events and the rest of the system will produce/consume them.
 
+need to write a simple compiler to HTML.
