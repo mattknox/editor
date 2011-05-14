@@ -18,6 +18,18 @@ function textCollectionBuilder(splitter, collectionClass) {
   };
 }
 
+// build word, line, and textbuffer, and then extract.
+function word(str, delim) {
+  return {
+    content: str,
+    delim: delim,
+    text: function() { return this.content; },
+    appendContent: function (val) { this.content += val; },
+    appendDelim:   function (val) { this.delim += val; }
+  };
+}
+
+
 function handleEvent(e) {
   if ($debug()) {
     debugEvent(e);
