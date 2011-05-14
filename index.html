@@ -3,6 +3,11 @@
     <title>
       start of an editor
     </title>
+    <style>
+      body {
+        font-family: Courier
+      }
+    </style>
     <script src="http://code.jquery.com/jquery-1.4.4.js"></script>
     <script type="text/javascript" src="./editor.js"></script>
     <script>
@@ -24,10 +29,6 @@ window.onload = function (){
     </script>
   </head>
   <body>
-    <p>so far this is mouseless, and doesn't do delete.</p>
-    <hr>
-    <pre id="code"></pre>
-    <hr>
     <a href="" id="toggler"> <h3> toggle debug pane </h3>
     </a>
     <div id="debug_wrapper">
@@ -37,6 +38,8 @@ window.onload = function (){
       <div id="debug_pane">
         this is where stuff will be written
       </div>
+      <hr>
     </div>
+    <div id="code"></div>
   </body>
 </html>

@@ -17,8 +17,8 @@ splitting these into different deals would be great, particularly if there was a
 
 
 way to build this:
-1 datastructures and libraries for exposing a text file for editing.
-2 library for working with said datastructure from the repl.  Lets you move around, cut lines, put them back, transpose, etc.
+1 datastructures to expose a text file for editing.
+2 library for manipulating said datastructure.  Lets you move around, cut lines, put them back, transpose, etc.
 3 library for embeddable parsers for languages/protocols/etc..  This converts to sexps
 4 library for conversion of the sexps to html
 5 keypress-to-function translator
@@ -27,5 +27,8 @@ way to build this:
 8 library to deal with the local system
 9 library for network ops-if in browser, this is pretty much free.
 
-1: need a replayable journal of insert/delete operations that can be 'gc'd down to a plain text file.  Also need a doubly-linked-list of lines for fast text and line insert/delete and probably display too.  Finally, need a sexp tree for sexp operations.  Need all of these to remain in sync, and not generate too much garbage.  TextBuffer should be the name for this class.  Evented seems like a good way to implement this sort of app; the keyboard, disk, mouse, and network will generate events and the rest of the system will produce/consume them.
+1: is a doubly-linked list of doubly-linked lists of words sufficient?
 
+2: need a replayable journal of insert/delete operations that can be 'gc'd down to a plain text file.  Also need a doubly-linked-list of lines for fast text and line insert/delete and probably display too.  Finally, need a sexp tree for sexp operations.  Need all of these to remain in sync, and not generate too much garbage.  TextBuffer should be the name for this class.  Evented seems like a good way to implement this sort of app; the keyboard, disk, mouse, and network will generate events and the rest of the system will produce/consume them.
+
+need to write a simple compiler to HTML.
