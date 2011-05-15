@@ -23,12 +23,27 @@ function word(str, delim) {
   return {
     content: str,
     delim: delim,
-    text: function() { return this.content; },
+    text: function() { return this.content + this.delim; },
     appendContent: function (val) { this.content += val; },
-    appendDelim:   function (val) { this.delim += val; }
+    setContent: function (val) { this.content = val; },
+    appendDelim:   function (val) { this.delim += val; },
+    setDelim:   function (val) { this.delim = val; }
   };
 }
 
+function line(str){
+  var arr = str.split(/(\s+)/);
+  var collection = [];
+  while (arr.length > 0) {
+    w = arr.shift();
+    d = arr.shift() || "";
+    collection.push(word(w, d));
+  }
+  return {
+    collection: collection,
+    text: function() { return this.collection.map(function(){ return this.text();}).join(""); }
+  };
+}
 
 function handleEvent(e) {
   if ($debug()) {
