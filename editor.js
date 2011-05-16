@@ -45,6 +45,10 @@ function line(str){
   };
 }
 
+function textbuffer(str) {
+  // need logic here to decide whether to append to or create a line/word
+}
+
 function handleEvent(e) {
   if ($debug()) {
     debugEvent(e);
