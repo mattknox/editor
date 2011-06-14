@@ -48,6 +48,11 @@ function line(str){
 function textbuffer(str) {
   // need logic here to decide whether to append to or create a line/word
 }
+var buffer = {
+  text: "",
+  handleEvent: 2,
+  doc: document.getElementById("code")
+};
 
 function handleEvent(e) {
   if ($debug()) {
@@ -95,6 +100,7 @@ function debugEvent(e) {
 
 function handleSpecialKeys(e) {
   if (e.keyCode == 8 ) {
+    alert("hit backspace");
     e.preventDefault();
   }
 }
