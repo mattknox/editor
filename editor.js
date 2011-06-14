@@ -48,10 +48,19 @@ function line(str){
 function textbuffer(str) {
   // need logic here to decide whether to append to or create a line/word
 }
+
 var buffer = {
   text: "",
   handleEvent: 2,
-  doc: document.getElementById("code")
+  doc: document.getElementById("code"),
+  handleDelete: function (e) {
+    this.text = this.text.slice(0, buffer.text.length - 1);
+    doc.innerHTML = doc.innerHTML.slice(0, doc.innerHTML.length - 1);
+  },
+  handleKeyPress: function (charCode, shift, ctrl, alt, meta) {
+    this.text += charCode;
+    doc.innerHTML += charCode;
+  }
 };
 
 function handleEvent(e) {
@@ -61,13 +70,15 @@ function handleEvent(e) {
 
   if (e.keyCode == 13) {
     document.getElementById("code").innerHTML += "<br/>";
+  } else if(e.keyCode == 8) {
+    return false;
   } else {
     handleKeyPress(String.fromCharCode(e.keyCode), e.shiftKey, e.ctrlKey, e.altKey, e.metaKey);
   }
 }
 
 function ignoreEvent(e) {
-  return e;
+  return false;
 }
 
 function handleKeyPress(charCode, shift, ctrl, alt, meta) {
@@ -100,7 +111,9 @@ function debugEvent(e) {
 
 function handleSpecialKeys(e) {
   if (e.keyCode == 8 ) {
-    alert("hit backspace");
-    e.preventDefault();
+    alert("hit delete");
+    buffer.handleDelete(e);
+//    e.preventDefault();
+    return false;
   }
 }
