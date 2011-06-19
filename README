@@ -6,4 +6,4 @@ need to build:
   parser framework
   macros to transform source code into classed code, for colorization.
   data structures in js.
-  take ymacs and make it single brawer and awesome
+  strip down ymacs and make it single brawer and awesome
