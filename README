@@ -1,6 +1,6 @@
 this is intended to be the beginnings of a programmer's text editor implemented in HTML/javascript/css, in the same spirit as emacs.
 The main goal is to be extensible in javascript/coffeescript/sibilant/whatever else compiles to js, and also styleable in HTML/CSS.
-
+Ultimately this should be the basis for a standalone app based on Chromium which will be the editor.
 
 need to build:
   parser framework
