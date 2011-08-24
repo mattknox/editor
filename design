@@ -33,3 +33,5 @@ way to build this:
 
 need to write a simple compiler to HTML.
 see if there is anything worth stealing from ymacs.
+
+Check out orion.  Really interesting ideas, despite a lack of extensibility in CSS/js.  They want the editor to call out to the web for things like running tests, scaffolding things, etc., and also to just be a bunch of tabs in a browser.  That is sorta interesting.  I think that local interaction is useful, and that getting to use all the keys is important.
