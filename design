@@ -33,3 +33,5 @@ way to build this:
 
 need to write a simple compiler to HTML.
 see if there is anything worth stealing from ymacs.
+
+@kmx talked about a technique for getting building embeddable HTML widgets, which would presumably be useful
