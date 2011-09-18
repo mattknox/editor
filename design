@@ -39,4 +39,6 @@ Check out orion.  Really interesting ideas, despite a lack of extensibility in C
 
 @kmx talked about a technique for getting building embeddable HTML widgets, which would presumably be useful
 
-see about embedding this in chromium.
+see about embedding this in chromium, for the following reasons:
+-so I can use NaCl and chrome extensions
+-so I can distribute to all reasonable computing platforms
