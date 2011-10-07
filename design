@@ -42,3 +42,7 @@ Check out orion.  Really interesting ideas, despite a lack of extensibility in C
 see about embedding this in chromium, for the following reasons:
 -so I can use NaCl and chrome extensions
 -so I can distribute to all reasonable computing platforms
+
+
+useful thoughts:
+http://davepeck.org/2009/05/14/dear-osx-editor-gods/
